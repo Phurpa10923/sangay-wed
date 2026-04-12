@@ -213,6 +213,30 @@ export default function Home() {
     };
   }, []);
 
+  // Background music — imperative Audio object avoids React lifecycle issues
+  useEffect(() => {
+    const audio = new Audio('/Ranjha.mp3');
+    audio.volume = 0.5;
+    audio.loop = true;
+
+    const GESTURES = ['click', 'touchstart', 'touchend', 'wheel', 'keydown', 'pointerdown'];
+
+    const tryPlay = () => {
+      audio.play().then(() => {
+        GESTURES.forEach(ev => window.removeEventListener(ev, tryPlay));
+      }).catch(() => {});
+    };
+
+    GESTURES.forEach(ev => window.addEventListener(ev, tryPlay, { passive: true }));
+    tryPlay();
+
+    return () => {
+      GESTURES.forEach(ev => window.removeEventListener(ev, tryPlay));
+      audio.pause();
+      audio.src = '';
+    };
+  }, []);
+
   return (
     <>
       {/* ── Loader ── */}
@@ -378,7 +402,7 @@ export default function Home() {
               <p className={s.covReception}>བཀྲ་ཤིས་བདེ་ལེགས།</p>
 
               <div className={s.scrollHint}>
-                <span>Swipe to open</span>
+                <span>Swipe left to open</span>
                 <div className={s.chevron}/>
               </div>
             </div>

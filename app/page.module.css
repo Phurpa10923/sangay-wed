@@ -107,8 +107,8 @@
 
 /* Use CSS individual transform properties so rotate: and animation: translate don't conflict */
 .ltTL {
-  position: absolute; top: -28px; left: -28px;
-  width: clamp(155px, 20vw, 200px); height: auto;
+  position: absolute; top: -32px; left: -32px;
+  width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 180deg;
   filter: drop-shadow(0 6px 22px rgba(196,120,160,.18));
@@ -116,8 +116,8 @@
   animation: lotusFloatAnim 6s ease-in-out infinite;
 }
 .ltTR {
-  position: absolute; top: -34px; right: -3px;
-  width: clamp(155px, 20vw, 200px); height: auto;
+  position: absolute; top: -32px; right: -32px;
+  width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 270deg;
   filter: drop-shadow(0 6px 22px rgba(196,120,160,.18));
@@ -125,8 +125,8 @@
   animation: lotusFloatAnim 6s ease-in-out infinite;
 }
 .ltBL {
-  position: absolute; bottom: -35px; left: -3px;
-  width: clamp(165px, 20vw, 215px); height: auto;
+  position: absolute; bottom: -32px; left: -32px;
+  width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 90deg;
   filter: drop-shadow(0 -6px 22px rgba(196,120,160,.18));
@@ -134,8 +134,8 @@
   animation: lotusFloatAnim 6s .8s ease-in-out infinite;
 }
 .ltBR {
-  position: absolute; bottom: -28px; right: -28px;
-  width: clamp(165px, 20vw, 215px); height: auto;
+  position: absolute; bottom: -32px; right: -32px;
+  width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 0deg;
   filter: drop-shadow(0 -6px 22px rgba(196,120,160,.18));
@@ -172,8 +172,8 @@
 
 /* Large lotus corner flowers on cover */
 .covLotTL {
-  position: absolute; top: -28px; left: -28px;
-  width: clamp(155px, 20vw, 200px); height: auto;
+  position: absolute; top: -32px; left: -32px;
+  width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 180deg;
   filter: drop-shadow(0 6px 22px rgba(196,120,160,.18));
@@ -181,8 +181,8 @@
   animation: lotusFloatAnim 6s ease-in-out infinite;
 }
 .covLotBR {
-  position: absolute; bottom: -28px; right: -28px;
-  width: clamp(165px, 20vw, 215px); height: auto;
+  position: absolute; bottom: -32px; right: -32px;
+  width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 0deg;
   filter: drop-shadow(0 -6px 22px rgba(196,120,160,.18));
