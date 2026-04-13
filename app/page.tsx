@@ -320,14 +320,14 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/lotus.png" className={`${s.lotusCorner} ${s.ltBR}`} alt="" aria-hidden="true" />
               <div className={s.evCard}>
-                <p className={s.evDateTag}>7 May 2026  ·  Thursday</p>
+                <p className={s.evDateTag}>6 May 2026  ·  Wednesday</p>
                 <div className={s.evRule} />
                 <h2 className={s.evTitle}>Dham</h2>
                 <div className={s.evTimeline}>
                   <div className={s.evItem}><span className={s.evTime}>1:00 PM</span><span className={s.evItemLabel}>Dham Begins</span></div>
                 </div>
                 <p className={s.evVenue}>
-                  <a className={s.vnMapLink} href="https://maps.google.com/?q=Norbulingka+Institute,+Sidhpur,+Dharamshala" target="_blank" rel="noopener noreferrer">
+                  <a className={s.vnMapLink} href="https://maps.app.goo.gl/RE5TuAvGrSWiNrea7" target="_blank" rel="noopener noreferrer">
                     Norbulingka · Dharamshala ↗
                   </a>
                 </p>
@@ -353,7 +353,7 @@ export default function Home() {
                 <div className={s.evRule} />
                 <h2 className={s.evTitle}>Mehndi</h2>
                 <p className={s.evVenue}>
-                  <a className={s.vnMapLink} href="https://maps.google.com/?q=Norbulingka+Institute,+Sidhpur,+Dharamshala" target="_blank" rel="noopener noreferrer">
+                  <a className={s.vnMapLink} href="https://maps.app.goo.gl/RE5TuAvGrSWiNrea7" target="_blank" rel="noopener noreferrer">
                     Norbulingka · Dharamshala ↗
                   </a>
                 </p>
@@ -388,7 +388,7 @@ export default function Home() {
                 <div className={s.evRule} />
 
                 <p className={s.wdVenueLabel}>
-                  <a className={s.vnMapLink} href="https://maps.google.com/?q=Norbulingka+Institute,+Sidhpur,+Dharamshala" target="_blank" rel="noopener noreferrer">
+                  <a className={s.vnMapLink} href="https://maps.app.goo.gl/RE5TuAvGrSWiNrea7" target="_blank" rel="noopener noreferrer">
                     Norbulingka, Dharamshala ↗
                   </a>
                 </p>
