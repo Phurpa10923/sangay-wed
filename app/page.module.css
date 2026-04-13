@@ -7,14 +7,53 @@
 }
 .loader.out { opacity: 0; visibility: hidden; pointer-events: none; }
 
+/* Couple wrap — outer container holding both the circle and the orbit */
+.loaderCoupleWrap {
+  position: relative;
+  width: 160px; height: 160px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Spinning ring that carries the lotus around */
+.loaderOrbit {
+  position: absolute;
+  width: 210px; height: 210px;
+  top: -25px; left: -25px;
+  animation: loaderSpin 5s linear infinite;
+}
+
+/* Lotus at the top-centre — travels around as parent spins */
+.loaderOrbitLotus {
+  position: absolute;
+  width: 38px; height: auto;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 8px rgba(212,175,55,.65));
+}
+
+.loaderCoupleImg {
+  width: min(220px, 60vw); height: min(220px, 60vw);
+  object-fit: cover; object-position: top;
+  border-radius: 50%;
+  border: 2.5px solid rgba(212,175,55,.45);
+  box-shadow: 0 0 0 5px rgba(255,255,255,.7), 0 4px 24px rgba(212,175,55,.2);
+  animation: lotusBloom .9s cubic-bezier(.34,1.4,.64,1) both;
+  flex-shrink: 0;
+}
+
 .loaderLotus {
-  position: relative; width: 120px; height: 120px;
+  position: relative; width: 140px; height: 140px;
   display: flex; align-items: center; justify-content: center;
 }
 .loaderLotusImg {
-  width: 76px; height: auto; position: relative; z-index: 2;
-  animation: lotusBloom 1.2s cubic-bezier(.34,1.56,.64,1) both;
-  filter: drop-shadow(0 0 14px rgba(212,175,55,.45));
+  width: 140px; height: 140px;
+  object-fit: cover; object-position: top;
+  border-radius: 50%;
+  border: 2px solid rgba(212,175,55,.4);
+  box-shadow: 0 0 0 4px rgba(255,255,255,.65), 0 4px 20px rgba(212,175,55,.2);
+  position: relative; z-index: 2;
+  animation: lotusBloom 1s cubic-bezier(.34,1.4,.64,1) both;
 }
 .loaderRing {
   position: absolute; inset: 4px; border-radius: 50%;
@@ -107,7 +146,7 @@
 
 /* Use CSS individual transform properties so rotate: and animation: translate don't conflict */
 .ltTL {
-  position: absolute; top: -32px; left: -32px;
+  position: absolute; top: 0px; left: 0px;
   width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 180deg;
@@ -116,7 +155,7 @@
   animation: lotusFloatAnim 6s ease-in-out infinite;
 }
 .ltTR {
-  position: absolute; top: -32px; right: -32px;
+  position: absolute; top: -15px; right: 15px;
   width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 270deg;
@@ -125,7 +164,7 @@
   animation: lotusFloatAnim 6s ease-in-out infinite;
 }
 .ltBL {
-  position: absolute; bottom: -32px; left: -32px;
+  position: absolute; bottom: -15px; left: 15px;
   width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 90deg;
@@ -134,7 +173,7 @@
   animation: lotusFloatAnim 6s .8s ease-in-out infinite;
 }
 .ltBR {
-  position: absolute; bottom: -32px; right: -32px;
+  position: absolute; bottom: 0px; right: 0px;
   width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 0deg;
@@ -158,21 +197,45 @@
   z-index: 5;
 }
 
-/* Buddha watermark — very faint */
+/* Khata backdrop on inner pages — draped across the middle */
+.pageKhataBg {
+  position: absolute;
+  width: 110%; height: auto;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  opacity: .1;
+  filter: saturate(.2) brightness(1.1);
+  pointer-events: none; z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 30%, black 70%, transparent 95%);
+          mask-image: linear-gradient(to bottom, transparent 5%, black 30%, black 70%, transparent 95%);
+}
+
+/* Buddha watermark on inner pages */
+.pageBuddhaBg {
+  position: absolute;
+  width: 80%; height: auto;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  opacity: .055;
+  filter: sepia(.4) saturate(.3);
+  pointer-events: none; z-index: 0;
+  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 75%);
+          mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 75%);
+}
+
+/* Buddha — top-anchored, blessing downward */
 .covBuddhaBg {
   position: absolute;
-  width: min(320px, 82vw); height: auto;
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
-  opacity: .045;
-  filter: sepia(.5) saturate(.4);
+  width: 150%; height: auto;
+  top: -20px; left: 50%; transform: translateX(-50%);
+  opacity: .5;
+  filter: sepia(.3) saturate(.5);
   pointer-events: none; z-index: 0;
-  -webkit-mask-image: radial-gradient(ellipse 78% 78% at 50% 50%, black 25%, transparent 78%);
-          mask-image: radial-gradient(ellipse 78% 78% at 50% 50%, black 25%, transparent 78%);
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 85%);
+          mask-image: linear-gradient(to bottom, black 30%, transparent 85%);
 }
 
 /* Large lotus corner flowers on cover */
 .covLotTL {
-  position: absolute; top: -32px; left: -32px;
+  position: absolute; top: 0px; left: 0px;
   width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 180deg;
@@ -181,7 +244,7 @@
   animation: lotusFloatAnim 6s ease-in-out infinite;
 }
 .covLotBR {
-  position: absolute; bottom: -32px; right: -32px;
+  position: absolute; bottom: 0px; right: 0px;
   width: clamp(160px, 21vw, 205px); height: auto;
   opacity: .88;
   rotate: 0deg;
@@ -190,12 +253,12 @@
   animation: lotusFloatAnim 6s .8s ease-in-out infinite;
 }
 
-/* Cover content */
+/* Cover content — pinned to bottom so buddha presides from above */
 .coverContent {
   position: relative; z-index: 3;
   width: 100%; height: 100%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 36px 32px 52px; text-align: center; gap: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  padding: 0 32px 48px; text-align: center; gap: 0;
 }
 
 /* "Together with their families" */
@@ -218,6 +281,18 @@
 .wreathSvg {
   position: absolute; inset: 0; width: 100%; height: 100%;
 }
+/* Couple image — circular, centred inside the wreath */
+.covCoupleImg {
+  position: absolute;
+  width: 62%; height: 62%;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(212,175,55,.45);
+  box-shadow: 0 0 0 4px rgba(255,255,255,.55), 0 0 18px rgba(212,175,55,.25);
+  z-index: 2;
+}
+
 .covWreathNames {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -225,14 +300,14 @@
 }
 .covName1, .covName2 {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.3rem, 4.5vw, 1.9rem);
+  font-size: clamp(1.7rem, 5.5vw, 2.4rem);
   color: #3D1A2A; line-height: 1.08;
   text-shadow: 0 1px 12px rgba(212,175,55,.15);
 }
 .covAnd {
   font-family: 'Cinzel', serif;
-  margin: 10px;
-  font-size: 1.5rem; letter-spacing: .18em;
+  margin: 4px 10px;
+  font-size: 1rem; letter-spacing: .18em;
   color: #D4AF37; line-height: 1;
 }
 
@@ -423,6 +498,151 @@
 .vnMapLink { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(212,175,55,.4); transition: color .2s, border-color .2s; margin: 10px;}
 .vnMapLink:hover { color: #6B2040; border-color: #6B2040; }
 
+/* ── Wedding page venue sections ───────────────────────── */
+.wdVenueLabel {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem; letter-spacing: .14em;
+  color: #3D1A2A; margin: 2px 0 1px;
+}
+.wdVenueDivider {
+  width: 40px; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212,175,55,.5), transparent);
+  margin: 6px auto;
+}
+
+/* ── RSVP floating button ───────────────────────────────── */
+.rsvpBtn {
+  position: fixed; bottom: 28px; right: 20px; z-index: 9000;
+  font-family: 'Cinzel', serif;
+  font-size: 13px; letter-spacing: .16em; text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #8B2060, #C8507A);
+  border: none; border-radius: 999px;
+  padding: 12px 22px;
+  box-shadow: 0 4px 18px rgba(139,32,96,.45);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+.rsvpBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,32,96,.45); }
+.rsvpBtn:active { transform: translateY(0); }
+.rsvpBtnHidden { opacity: 0; pointer-events: none; }
+
+/* ── RSVP overlay ───────────────────────────────────────── */
+.rsvpOverlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(30,10,20,.55);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: flex-end; justify-content: center;
+  animation: fadeUp .22s ease both;
+}
+.rsvpModal {
+  position: relative;
+  width: min(480px, 100vw);
+  max-height: 88dvh; overflow-y: auto;
+  background: #FFFDFB;
+  border-radius: 20px 20px 0 0;
+  padding: 32px 28px 40px;
+  box-shadow: 0 -8px 40px rgba(100,30,60,.18);
+}
+.rsvpClose {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: none; cursor: pointer;
+  font-size: 1rem; color: rgba(61,26,42,.4);
+  line-height: 1;
+}
+.rsvpClose:hover { color: #8B2060; }
+
+/* RSVP header */
+.rsvpTitle {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem; color: #2E0A16; text-align: center; margin-bottom: 2px;
+}
+.rsvpSub {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.3rem; color: #8B2060; text-align: center; margin-bottom: 6px;
+}
+.rsvpRule {
+  width: 60px; height: 1px;
+  background: linear-gradient(to right, transparent, #D4AF37, transparent);
+  margin: 0 auto 18px;
+}
+
+/* RSVP form */
+.rsvpForm { display: flex; flex-direction: column; gap: 14px; }
+.rsvpLabel {
+  display: flex; flex-direction: column; gap: 5px;
+  font-family: 'Cinzel', serif;
+  font-size: .46rem; letter-spacing: .18em; text-transform: uppercase;
+  color: #6B4060;
+}
+.rsvpInput {
+  font-family: 'Cormorant Garamond', serif; font-size: .95rem;
+  color: #2E0A16; background: #FFF8FB;
+  border: 1px solid rgba(212,175,55,.35); border-radius: 8px;
+  padding: 10px 14px; outline: none;
+  transition: border-color .2s;
+}
+.rsvpInput:focus { border-color: rgba(139,32,96,.45); }
+
+/* Guest counter */
+.rsvpCounter {
+  display: flex; align-items: center; gap: 18px; justify-content: center;
+  margin-top: -6px;
+}
+.rsvpCountBtn {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(212,175,55,.45);
+  background: #FFF8FB; color: #8B2060;
+  font-size: 1.1rem; cursor: pointer; line-height: 1;
+  transition: background .15s;
+}
+.rsvpCountBtn:hover { background: #F0C8D8; }
+.rsvpCountNum {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.5rem; color: #2E0A16; min-width: 28px; text-align: center;
+}
+
+/* Attend buttons */
+.rsvpAttendRow {
+  display: flex; gap: 10px; margin-top: -4px;
+}
+.rsvpAttendBtn {
+  flex: 1; padding: 10px 8px;
+  font-family: 'Cinzel', serif; font-size: .46rem; letter-spacing: .12em;
+  border: 1.5px solid rgba(212,175,55,.35); border-radius: 10px;
+  background: #FFF8FB; color: #5A3A4A; cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.rsvpAttendActive {
+  background: linear-gradient(135deg, #8B2060, #C8507A);
+  border-color: transparent; color: #fff;
+}
+
+/* Submit */
+.rsvpSubmit {
+  font-family: 'Cinzel', serif; font-size: .52rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #8B2060, #C8507A);
+  border: none; border-radius: 10px;
+  padding: 14px; cursor: pointer; margin-top: 4px;
+  transition: opacity .2s;
+}
+.rsvpSubmit:disabled { opacity: .4; cursor: default; }
+.rsvpSubmit:not(:disabled):hover { opacity: .88; }
+
+/* Thanks screen */
+.rsvpThanks { text-align: center; padding: 24px 0; }
+.rsvpThanksIcon { font-size: 2.8rem; margin-bottom: 12px; }
+.rsvpThanksTitle {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2rem; color: #2E0A16; margin-bottom: 8px;
+}
+.rsvpThanksSub {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: .95rem; color: rgba(61,26,42,.55); line-height: 1.7;
+}
+
 /* ── Progress bar ───────────────────────────────────────── */
 .prog { position: fixed; bottom: 0; left: 0; height: 2px; background: linear-gradient(to right, #F0C8D8, #D4AF37, #C8960C); z-index: 400; width: 0; transition: width .06s linear; box-shadow: 0 0 6px rgba(212,175,55,.4); }
 
@@ -435,8 +655,6 @@
 /* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 420px) {
   .ipage { padding: 38px 20px; }
-  .ltTR  { top: 18px; right: 18px; }
-  .ltBL  { bottom: 18px; left: 18px; }
   .familyRow { gap: 8px; }
   .evTitle { font-size: clamp(1.9rem, 6vw, 2.8rem); }
 }
