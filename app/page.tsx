@@ -174,7 +174,7 @@ export default function Home() {
 
     // Background music — created here so gesture handlers can call play() in trusted context
     const audio = new Audio('/tibetan.mp3');
-    audio.volume = 0.3;
+    audio.volume = 0.15;
     audio.loop = true;
     let audioStarted = false;
     const startAudio = () => { if (!audioStarted) { audio.play().then(() => { audioStarted = true; }).catch(() => { }); } };
