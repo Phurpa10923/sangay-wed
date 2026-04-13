@@ -174,7 +174,7 @@ export default function Home() {
 
     // Background music — created here so gesture handlers can call play() in trusted context
     const audio = new Audio('/tibetan.mp3');
-    audio.volume = 0.15;
+    audio.volume = 0.25;
     audio.loop = true;
     let audioStarted = false;
     const startAudio = () => { if (!audioStarted) { audio.play().then(() => { audioStarted = true; }).catch(() => { }); } };
@@ -260,7 +260,7 @@ export default function Home() {
         </div>
         <div className={s.loaderNames}>
           <span className={s.covName1}>Sange Dorje</span>
-          <span className={s.covAnd}>&amp;</span>
+          <span className={s.covAnd}>Weds</span>
           <span className={s.covName2}>Kalzang Dolkar</span>
         </div>
         <p className={s.loaderSub}>preparing your invitation…</p>
@@ -433,7 +433,7 @@ export default function Home() {
                 <WreathCircle />
                 <div className={s.covWreathNames}>
                   <span className={s.covName1}>Sange Dorje</span>
-                  <span className={s.covAnd}>&amp;</span>
+                  <span className={s.covAnd}>weds</span>
                   <span className={s.covName2}>Kalzang Dolkar</span>
                 </div>
               </div>
