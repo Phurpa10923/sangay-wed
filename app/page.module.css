@@ -327,7 +327,7 @@
 }
 .covMonth {
   font-family: 'Cinzel', serif;
-  font-size: .62rem; letter-spacing: .32em; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .32em; text-transform: uppercase;
   color: #6B4060; margin-bottom: 5px;
 }
 .covDateRow {
@@ -337,19 +337,19 @@
   padding: 5px 22px; margin: 0 auto 5px;
 }
 .covDay {
-  font-family: 'Cinzel', serif; font-size: .5rem;
+  font-family: 'Cinzel', serif; font-size: 0.7rem;
   letter-spacing: .22em; text-transform: uppercase; color: #6B4060;
 }
 .covDayNum {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 1.7rem; line-height: 1; color: #3D1A2A;
+  font-size: 2rem; line-height: 1; color: #3D1A2A;
 }
 .covTime {
-  font-family: 'Cinzel', serif; font-size: .5rem;
+  font-family: 'Cinzel', serif; font-size: 0.8rem;
   letter-spacing: .22em; text-transform: uppercase; color: #6B4060;
 }
 .covYear {
-  font-family: 'Cinzel', serif; font-size: .58rem;
+  font-family: 'Cinzel', serif; font-size: 0.8rem;
   letter-spacing: .3em; color: #6B4060;
 }
 
@@ -428,7 +428,8 @@
 }
 .evDateTag {
   font-family: 'Cinzel', serif;
-  font-size: .48rem; letter-spacing: .28em; text-transform: uppercase;
+  font-weight: bold;
+  font-size: .8rem; letter-spacing: .28em; text-transform: uppercase;
   color: #8B5070; opacity: .78;
 }
 .evRule {
