@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Sange & Kalzang Wedding",
     images: [
       {
-        url: `${BASE_URL}/og-cover.png`,
+        url: `${BASE_URL}/og-cover.png?v=2`,
         width: 1200,
         height: 630,
         alt: "Sange Dorje & Kalzang Dolkar Wedding Invitation",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "You're Invited 🪷 Sange & Kalzang's Wedding",
     description: "8 May 2026 · Dhauladhar Heights Resort, Dharamshala",
-    images: [`${BASE_URL}/og-cover.png`],
+    images: [`${BASE_URL}/og-cover.png?v=2`],
   },
 };
 
