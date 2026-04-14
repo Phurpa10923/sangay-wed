@@ -466,12 +466,13 @@
 }
 .evTime {
   font-family: 'Cinzel', serif;
-  font-size: .5rem; letter-spacing: .18em;
-  color: #D4AF37; min-width: 58px; text-align: right;
+  font-size: .85rem; letter-spacing: .18em;
+  font-weight: 700;
+  color: #D4AF37; min-width: 68px; text-align: right;
 }
 .evItemLabel {
   font-family: 'Cormorant Garamond', serif;
-  font-size: .82rem; color: #3D1A2A; text-align: left;
+  font-size: 1rem; font-weight: 700; color: #3D1A2A; text-align: left;
 }
 .evDressCode {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
