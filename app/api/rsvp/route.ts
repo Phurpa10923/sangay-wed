@@ -1,10 +1,7 @@
 import { NextResponse } from 'next/server';
-import { Redis } from '@upstash/redis';
+import Redis from 'ioredis';
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-});
+const redis = new Redis(process.env.REDIS_URL!);
 
 const KEY = 'rsvp-responses';
 
@@ -17,9 +14,7 @@ export async function POST(request: Request) {
 
 export async function GET() {
   const items = await redis.lrange(KEY, 0, -1);
-  const parsed = items.map(item =>
-    typeof item === 'string' ? JSON.parse(item) : item
-  );
+  const parsed = items.map(item => JSON.parse(item));
   return NextResponse.json(parsed);
 }
 
