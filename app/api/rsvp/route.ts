@@ -1,31 +1,29 @@
 import { NextResponse } from 'next/server';
-import { writeFile, readFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { Redis } from '@upstash/redis';
 
-const FILE = path.join(process.cwd(), 'rsvp-responses.json');
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+});
+
+const KEY = 'rsvp-responses';
 
 export async function POST(request: Request) {
   const body = await request.json();
   const entry = { ...body, timestamp: new Date().toISOString() };
-
-  let list: unknown[] = [];
-  try {
-    list = JSON.parse(await readFile(FILE, 'utf-8'));
-  } catch {
-    await mkdir(path.dirname(FILE), { recursive: true });
-  }
-
-  list.push(entry);
-  await writeFile(FILE, JSON.stringify(list, null, 2));
-
+  await redis.lpush(KEY, JSON.stringify(entry));
   return NextResponse.json({ ok: true });
 }
 
 export async function GET() {
-  try {
-    const data = await readFile(FILE, 'utf-8');
-    return NextResponse.json(JSON.parse(data));
-  } catch {
-    return NextResponse.json([]);
-  }
+  const items = await redis.lrange(KEY, 0, -1);
+  const parsed = items.map(item =>
+    typeof item === 'string' ? JSON.parse(item) : item
+  );
+  return NextResponse.json(parsed);
+}
+
+export async function DELETE() {
+  await redis.del(KEY);
+  return NextResponse.json({ ok: true });
 }
