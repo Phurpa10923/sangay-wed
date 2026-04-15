@@ -100,8 +100,6 @@ export default function Home() {
 
   const coverRef = useRef<HTMLDivElement>(null);
   const page0Ref = useRef<HTMLDivElement>(null);  // Families / blessing
-  const page1Ref = useRef<HTMLDivElement>(null);  // Dham — 6 May
-  const page2Ref = useRef<HTMLDivElement>(null);  // Mehndi — 7 May
   const page3Ref = useRef<HTMLDivElement>(null);  // Wedding — 8 May
   const progRef = useRef<HTMLDivElement>(null);
   const loaderRef = useRef<HTMLDivElement>(null);
@@ -126,8 +124,8 @@ export default function Home() {
       coverRef.current.style.pointerEvents = oE > 0.88 ? 'none' : 'auto';
     }
 
-    const pages = [page0Ref, page1Ref, page2Ref, page3Ref];
-    const RS = 0.42, RW = 0.58, PW = RW / pages.length; // PW = 0.145
+    const pages = [page0Ref, page3Ref];
+    const RS = 0.42, RW = 0.58, PW = RW / pages.length;
     pages.forEach((ref, i) => {
       const el = ref.current; if (!el) return;
       const r = (p - RS - i * PW) / PW;
@@ -155,8 +153,8 @@ export default function Home() {
     window.addEventListener('load', () => setTimeout(hideLoader, 900));
     const fallback = setTimeout(hideLoader, 1900);
 
-    // 4 inner pages: centres at 0.49, 0.64, 0.78, 0.93
-    const SNAPS = [0, 0.49, 0.64, 0.78, 0.93];
+    // 2 inner pages: centres at 0.55, 0.84
+    const SNAPS = [0, 0.55, 0.84];
     let snapLock = false;
 
     function goToSnap(dir: number) {
@@ -307,69 +305,7 @@ export default function Home() {
               <p className={s.ipQtib}>འདུ་འཛི་དེ་གངས་རི་བཞིན་རྟག་གྱུར་ཅིག</p>
             </div>
 
-            {/* Page 1 — Dham  (TL + BR lotus) */}
-            <div className={`${s.ipage} ${s.ipageLight}`} ref={page1Ref}>
-              <InnerBorderSVG />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/buddha.png" alt="" aria-hidden="true" className={s.pageBuddhaBg} />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/khata.png" alt="" aria-hidden="true" className={s.pageKhataBg} />
-              <LotusWatermark />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/lotus.png" className={`${s.lotusCorner} ${s.ltTL}`} alt="" aria-hidden="true" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/lotus.png" className={`${s.lotusCorner} ${s.ltBR}`} alt="" aria-hidden="true" />
-              <div className={s.evCard}>
-                <p className={s.evDateTag}>6 May 2026  ·  Wednesday</p>
-                <div className={s.evRule} />
-                <h2 className={s.evTitle}>Dham</h2>
-                <div className={s.evTimeline}>
-                  <div className={s.evItem}><span className={s.evTime}>1:00 PM</span><span className={s.evItemLabel}>Dham Begins</span></div>
-                </div>
-                <p className={s.evVenue}>
-                  <a className={s.vnMapLink} href="https://maps.app.goo.gl/RE5TuAvGrSWiNrea7" target="_blank" rel="noopener noreferrer">
-                    Norbulingka · Dharamshala ↗
-                  </a>
-                </p>
-                <div className={s.evRule} />
-                <p className={s.evTib}>ཤིས་པ་ཐམས་ཅད་འབྱུང་བར་ཤོག</p>
-              </div>
-            </div>
-
-            {/* Page 2 — Mehndi  (TR + BL lotus) */}
-            <div className={`${s.ipage} ${s.ipageMehndi}`} ref={page2Ref}>
-              <InnerBorderSVG />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/buddha.png" alt="" aria-hidden="true" className={s.pageBuddhaBg} />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/khata.png" alt="" aria-hidden="true" className={s.pageKhataBg} />
-              <LotusWatermark />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/lotus.png" className={`${s.lotusCorner} ${s.ltTR}`} alt="" aria-hidden="true" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/lotus.png" className={`${s.lotusCorner} ${s.ltBL}`} alt="" aria-hidden="true" />
-              <div className={s.evCard}>
-                <p className={s.evDateTag}>7 May 2026  ·  Thursday</p>
-                <div className={s.evRule} />
-                <h2 className={s.evTitle}>Mehndi</h2>
-                <p className={s.evVenue}>
-                  <a className={s.vnMapLink} href="https://maps.app.goo.gl/RE5TuAvGrSWiNrea7" target="_blank" rel="noopener noreferrer">
-                    Norbulingka · Dharamshala ↗
-                  </a>
-                </p>
-                <div className={s.evRule} />
-                <div className={s.evTimeline}>
-                  <div className={s.evItem}><span className={s.evTime}>5:00 PM</span><span className={s.evItemLabel}>Guest Entry</span></div>
-                  <div className={s.evItem}><span className={s.evTime}>6:00 PM</span><span className={s.evItemLabel}>Mehndi Begins</span></div>
-                  <div className={s.evItem}><span className={s.evTime}>10:00 PM</span><span className={s.evItemLabel}>Farewell</span></div>
-                </div>
-                <div className={s.evRule} />
-                <p className={s.evDressCode}>🌸 Any shade of pink is mandatory 🌸</p>
-                <p className={s.evDressNote}>Kindly bear with us!</p>
-              </div>
-            </div>
-
-            {/* Page 3 — Wedding  (TL + BR lotus) */}
+            {/* Page 1 — Wedding  (TL + BR lotus) */}
             <div className={`${s.ipage} ${s.ipageLight}`} ref={page3Ref}>
               <InnerBorderSVG />
               {/* eslint-disable-next-line @next/next/no-img-element */}
