@@ -8,7 +8,7 @@ const cinzelDec = Cinzel_Decorative({ subsets: ["latin"], weight: ["400"], varia
 const greatVibes = Great_Vibes({ subsets: ["latin"], weight: ["400"], variable: "--font-great-vibes" });
 const notoTibetan = Noto_Serif_Tibetan({ subsets: ["tibetan"], weight: ["400"], variable: "--font-noto-tibetan" });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sangay-wed.vercel.app";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sange-kalsang-wedding.vercel.app/";
 
 export const metadata: Metadata = {
   title: "Sange Dorje & Kalzang Dolkar — Wedding Invitation",
