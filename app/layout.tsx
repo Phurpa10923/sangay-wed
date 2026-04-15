@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Cinzel, Cinzel_Decorative, Great_Vibes, Noto_Serif_Tibetan } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400","600"], variable: "--font-cormorant" });
@@ -48,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${cinzel.variable} ${cinzelDec.variable} ${greatVibes.variable} ${notoTibetan.variable}`}>
-      <body>{children}</body>
+      <body>{children}<Analytics /></body>
     </html>
   );
 }
